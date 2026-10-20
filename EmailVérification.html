@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Exercice 2 - Vérification Email</title>
+    <style>
+        body { font-family: Arial; padding: 30px; max-width: 500px; margin: auto; }
+        h2 { color: #1c1313; }
+        input { padding: 10px; width: 100%; margin: 10px 0; }
+        button { padding: 10px 20px; background: rgb(49, 49, 54); color: white; border: none; cursor: pointer; }
+        #resultat { margin-top: 15px; padding: 10px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h2>Exercice 2 : Vérification d'email</h2>
+    <label>Entrez votre email :</label>
+    <input type="text" id="email" placeholder="exemple@mail.com">
+    <br>
+    <button onclick="verifierEmail()">Vérifier</button>
+    <div id="resultat"></div>
+
+    <script language="javascript">
+        function verifierEmail() {
+            var email = document.getElementById("email").value;
+            var resultat = document.getElementById("resultat");
+            
+            var posArobase = email.indexOf("@");
+            
+           
+            var avantArobase = email.substring(0, posArobase);
+            
+            
+            var posPoint = email.indexOf(".", posArobase);
+            
+            if (posArobase > 0 && posPoint > posArobase && avantArobase.length > 0) {
+                resultat.innerHTML = " Email valide : " + email;
+                resultat.style.color = "green";
+            } else {
+                resultat.innerHTML = " Email invalide : " + email;
+                resultat.style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>

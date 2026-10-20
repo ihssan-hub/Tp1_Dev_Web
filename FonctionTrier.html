@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Exercice 3 - Fonction Trier</title>
+    <style>
+        body { font-family: Arial; padding: 30px; max-width: 500px; margin: auto; }
+        h2 { color: #333; }
+        input {
+            padding: 10px;
+            width: 100%;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            background: rgb(44, 99, 44);
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        #resultat {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: rgb(242, 246, 247);
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>Exercice 3 : Fonction trier()</h2>
+    
+    <label>Entrez des nombres séparés par des virgules :</label>
+    <input type="text" id="saisie" placeholder="Ex: 5, 2, 8, 1, 9, 3">
+    <br>
+    <button onclick="tester()">Trier la liste</button>
+    
+    <div id="resultat"></div>
+
+    <script language="javascript">
+        function trier(liste) {
+            var copie = new Array(liste.length);
+            for (var i = 0; i < liste.length; i++) {
+                copie[i] = liste[i];
+            }
+            copie.sort(function(a, b) {
+                return a - b;
+            });
+            return copie;
+        }
+        function tester() {
+            var saisie = document.getElementById("saisie").value;
+            
+           
+            if (saisie == "") {
+                document.getElementById("resultat").innerHTML = "Veuillez entrer des nombres !";
+                return;
+            }
+            
+            
+            var tabTexte = saisie.split(",");
+            
+           
+            var nombres = new Array(tabTexte.length);
+            for (var i = 0; i < tabTexte.length; i++) {
+                nombres[i] = parseFloat(tabTexte[i]);
+            }
+            
+            
+            for (var i = 0; i < nombres.length; i++) {
+                if (isNaN(nombres[i])) {
+                    document.getElementById("resultat").innerHTML = "Erreur : '" + tabTexte[i] + "' n'est pas un nombre !";
+                    return;
+                }
+            }
+            
+           
+            var resultat = trier(nombres);
+            
+            
+            document.getElementById("resultat").innerHTML = 
+                "Liste originale : [" + nombres.join(", ") + "]<br>" +
+                "Liste triée : [" + resultat.join(", ") + "]";
+        }
+    </script>
+</body>
+</html>

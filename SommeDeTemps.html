@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Exercice 4 - Somme de temps</title>
+    <style>
+        body { font-family: Arial; padding: 30px; max-width: 500px; margin: auto; }
+        h2 { color: #333; }
+        table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+        th, td { border: 1px solid black; padding: 10px; text-align: center; }
+        th { background-color: rgb(134, 134, 203); color: white; }
+        input { width: 60px; padding: 5px; text-align: center; }
+        button { padding: 10px 20px; background: green; color: white; border: none; cursor: pointer; }
+        #resultat {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: rgb(199, 199, 26);
+            font-weight: bold;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Exercice 4 : Somme de 3 mesures de temps</h2>
+    
+    <table>
+        <tr>
+            <th></th>
+            <th>Heures</th>
+            <th>Minutes</th>
+            <th>Secondes</th>
+        </tr>
+        <tr>
+            <td><strong>Temps 1</strong></td>
+            <td><input type="text" id="h1" value="2"></td>
+            <td><input type="text" id="m1" value="45"></td>
+            <td><input type="text" id="s1" value="30"></td>
+        </tr>
+        <tr>
+            <td><strong>Temps 2</strong></td>
+            <td><input type="text" id="h2" value="3"></td>
+            <td><input type="text" id="m2" value="30"></td>
+            <td><input type="text" id="s2" value="45"></td>
+        </tr>
+        <tr>
+            <td><strong>Temps 3</strong></td>
+            <td><input type="text" id="h3" value="5"></td>
+            <td><input type="text" id="m3" value="20"></td>
+            <td><input type="text" id="s3" value="15"></td>
+        </tr>
+    </table>
+    
+    <button onclick="calculerTemps()">Calculer la somme</button>
+    <div id="resultat"></div>
+
+    <script language="javascript">
+        function calculerTemps() {
+            var h1 = parseInt(document.getElementById("h1").value);
+            var m1 = parseInt(document.getElementById("m1").value);
+            var s1 = parseInt(document.getElementById("s1").value);
+            var h2 = parseInt(document.getElementById("h2").value);
+            var m2 = parseInt(document.getElementById("m2").value);
+            var s2 = parseInt(document.getElementById("s2").value);
+            var h3 = parseInt(document.getElementById("h3").value);
+            var m3 = parseInt(document.getElementById("m3").value);
+            var s3 = parseInt(document.getElementById("s3").value);
+            
+           
+            var totalSecondes = (h1 * 3600 + m1 * 60 + s1) + 
+                                (h2 * 3600 + m2 * 60 + s2) + 
+                                (h3 * 3600 + m3 * 60 + s3);
+            
+           
+            var jours = Math.floor(totalSecondes / 86400);
+            totalSecondes = totalSecondes % 86400;
+            
+            var heures = Math.floor(totalSecondes / 3600);
+            totalSecondes = totalSecondes % 3600;
+            
+            var minutes = Math.floor(totalSecondes / 60);
+            var secondes = totalSecondes % 60;
+            
+            document.getElementById("resultat").innerHTML = 
+                "Résultat : " + jours + " jour(s), " + 
+                heures + " heure(s), " + 
+                minutes + " minute(s), " + 
+                secondes + " seconde(s)";
+        }
+    </script>
+</body>
+</html>
